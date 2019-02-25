@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import xlrd
 import numpy
 import numpy as np
@@ -88,7 +88,7 @@ for i in range(383):
         for j in range(i,383):
             kd[j,i]=np.exp(-gamd*(D[i,i]+D[j,j]-2*D[i,j]))
 kd=kd+kd.T-np.diag(np.diag(kd))
-KD=np.asarray(kd)                                                              # Obtain Gaussian interaction profile kernel similarity for disease SD
+KD=np.asarray(kd)                                                              #Obtain Gaussian interaction profile kernel similarity for disease SD
 kd=[]                            
 SD = np.multiply(SS,DWM)+np.multiply(KD,(1-DWM))
 SD=np.asarray(SD)
@@ -103,14 +103,18 @@ km=[]
 SM = np.multiply(FS,MWM)+np.multiply(KM,(1-MWM))
 SM=np.asarray(SM)                                                              #Obtain Gaussian interaction profile kernel similarity for miRNA SM
 #K_mean clustering
-major=[]                          
-minor=[]                            
+unknown=[]                          
+known=[]                            
 for x in range(383):                 
     for y in range(495):
         if A[x,y]==0:                 
-            major.append((x,y))
+            unknown.append((x,y))
         else:
-            minor.append((x,y))                                                #Divide the samples into Major and Minor
+            known.append((x,y))                                                #Divide the samples into Major and Minor
+major=[]
+for z in range(184155):
+        q=SD[unknown[z][0],:].tolist()+SM[unknown[z][1],:].tolist()
+        major.append(q)
 kmeans=KMeans(n_clusters=23, random_state=0).fit(major)      
 center=kmeans.cluster_centers_
 center_x=[]
@@ -167,73 +171,76 @@ type23_x=[]
 type23_y=[]
 for i in range(len(labels)):
     if labels[i]==0:
-        type1_x.append(major[i][0])
-        type1_y.append(major[i][1])
+        type1_x.append(unknown[i][0])
+        type1_y.append(unknown[i][1])
     if labels[i]==1:
-        type2_x.append(major[i][0])
-        type2_y.append(major[i][1])
+        type2_x.append(unknown[i][0])
+        type2_y.append(unknown[i][1])
     if labels[i]==2:
-        type3_x.append(major[i][0])
-        type3_y.append(major[i][1])
+        type3_x.append(unknown[i][0])
+        type3_y.append(unknown[i][1])
     if labels[i]==3:
-        type4_x.append(major[i][0])
-        type4_y.append(major[i][1])
+        type4_x.append(unknown[i][0])
+        type4_y.append(unknown[i][1])
     if labels[i]==4:
-        type5_x.append(major[i][0])
-        type5_y.append(major[i][1])
+        type5_x.append(unknown[i][0])
+        type5_y.append(unknown[i][1])
     if labels[i]==5:
-        type6_x.append(major[i][0])
-        type6_y.append(major[i][1])
+        type6_x.append(unknown[i][0])
+        type6_y.append(unknown[i][1])
     if labels[i]==6:
-        type7_x.append(major[i][0])
-        type7_y.append(major[i][1])
+        type7_x.append(unknown[i][0])
+        type7_y.append(unknown[i][1])
     if labels[i]==7:
-        type8_x.append(major[i][0])
-        type8_y.append(major[i][1])
+        type8_x.append(unknown[i][0])
+        type8_y.append(unknown[i][1])
+    if labels[i]==8:
+        type9_x.append(unknown[i][0])
+        type9_y.append(unknown[i][1])
     if labels[i]==9:
-        type10_x.append(major[i][0])
-        type10_y.append(major[i][1])
+        type10_x.append(unknown[i][0])
+        type10_y.append(unknown[i][1])
     if labels[i]==10:
-        type11_x.append(major[i][0])
-        type11_y.append(major[i][1])
+        type11_x.append(unknown[i][0])
+        type11_y.append(unknown[i][1])
     if labels[i]==11:
-        type12_x.append(major[i][0])
-        type12_y.append(major[i][1])
+        type12_x.append(unknown[i][0])
+        type12_y.append(unknown[i][1])
     if labels[i]==12:
-        type13_x.append(major[i][0])
-        type13_y.append(major[i][1])
+        type13_x.append(unknown[i][0])
+        type13_y.append(unknown[i][1])
     if labels[i]==13:
-        type14_x.append(major[i][0])
-        type14_y.append(major[i][1])
+        type14_x.append(unknown[i][0])
+        type14_y.append(unknown[i][1])
     if labels[i]==14:
-        type15_x.append(major[i][0])
-        type15_y.append(major[i][1])
+        type15_x.append(unknown[i][0])
+        type15_y.append(unknown[i][1])
     if labels[i]==15:
-        type16_x.append(major[i][0])
-        type16_y.append(major[i][1])
+        type16_x.append(unknown[i][0])
+        type16_y.append(unknown[i][1])
     if labels[i]==16:
-        type17_x.append(major[i][0])
-        type17_y.append(major[i][1])
+        type17_x.append(unknown[i][0])
+        type17_y.append(unknown[i][1])
     if labels[i]==17:
-        type18_x.append(major[i][0])
-        type18_y.append(major[i][1])
+        type18_x.append(unknown[i][0])
+        type18_y.append(unknown[i][1])
     if labels[i]==18:
-        type19_x.append(major[i][0])
-        type19_y.append(major[i][1])
+        type19_x.append(unknown[i][0])
+        type19_y.append(unknown[i][1])
     if labels[i]==19:
-        type20_x.append(major[i][0])
-        type20_y.append(major[i][1])
+        type20_x.append(unknown[i][0])
+        type20_y.append(unknown[i][1])
     if labels[i]==20:
-        type21_x.append(major[i][0])
-        type21_y.append(major[i][1])
+        type21_x.append(unknown[i][0])
+        type21_y.append(unknown[i][1])
     if labels[i]==21:
-        type22_x.append(major[i][0])
-        type22_y.append(major[i][1])
+        type22_x.append(unknown[i][0])
+        type22_y.append(unknown[i][1])
     if labels[i]==22:
-        type23_x.append(major[i][0])
-        type23_y.append(major[i][1])
-type=[[]]*23                                
-mtype=[[]]*23                                      
+        type23_x.append(unknown[i][0])
+        type23_y.append(unknown[i][1])
+type=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]                                        #23簇
+mtype=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]                                     
 dataSet=[]                                
 for k1 in range(len(type1_x)):
     type[0].append((type1_x[k1],type1_y[k1]))      
@@ -321,7 +328,7 @@ D=numpy.ones(10950)*1.0/10950.0                                                #
 for xx in dataSet:
     q=SD[xx[0],:].tolist()+SM[xx[1],:].tolist()
     x.append(q)                                                         
-    if (xx[0],xx[1]) in minor:
+    if (xx[0],xx[1]) in known:
         y.append(1)
     else:
         y.append(0)                                     
@@ -523,7 +530,7 @@ vs20=numpy.array(v20)
 sumy20[vs20!=ys]=1
 sumd20=(sumy20*D19).sum()
 at20=math.log((1-sumd20)/sumd20)*0.5                                           #End of training process
-for yy in major:
+for yy in unknown:
     q1=SD[yy[0],:].tolist()+SM[yy[1],:].tolist()          
     x1.append(q1)  
 fs=clf1.predict_proba(x1)*at1+clf2.predict_proba(x1)*at2+clf3.predict_proba(x1)*at3+clf4.predict_proba(x1)*at4+clf5.predict_proba(x1)*at5+clf6.predict_proba(x1)*at6+clf7.predict_proba(x1)*at7+clf8.predict_proba(x1)*at8+clf9.predict_proba(x1)*at9+clf10.predict_proba(x1)*at10+clf11.predict_proba(x1)*at11+clf12.predict_proba(x1)*at12+clf13.predict_proba(x1)*at13+clf14.predict_proba(x1)*at14+clf15.predict_proba(x1)*at15+clf16.predict_proba(x1)*at16+clf17.predict_proba(x1)*at17+clf18.predict_proba(x1)*at18+clf19.predict_proba(x1)*at19+clf20.predict_proba(x1)*at20
@@ -540,8 +547,8 @@ f.writelines(['disease','\t','miRNA','\t','Score','\n'])
 f.close()
 for i in range(184155):                     
     a=fs[:,1][Sampleindex[i]]
-    s7=sheet7.row_values(major[Sampleindex[i]][0])                   
-    s8=sheet8.row_values(major[Sampleindex[i]][1])                     
+    s7=sheet7.row_values(unknown[Sampleindex[i]][0])                   
+    s8=sheet8.row_values(unknown[Sampleindex[i]][1])                     
     f=open(r'Prediction results for all unknown samples.txt','a+')
     f.writelines([s7[1],'\t',s8[1],'\t',str(a),'\n'])
     f.close()                                                                  #Obtain the prediction results for all unknown samples
